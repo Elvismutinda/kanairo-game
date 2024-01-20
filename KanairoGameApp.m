@@ -20,9 +20,9 @@ classdef KanairoGameApp < matlab.apps.AppBase
         
             % Defining the 3 levels information
             levels = {
-                struct('map', 'nairobi_city_map.jpg', 'collision', 'nairobi_city_collision_map.png', 'victory', 'nairobi_city_victory_map.png', 'death', 'nairobi_city_death_map.png', 'audio', 'wakadinali_mc_mca.mp3'),...
-                struct('map', 'nairobi_park_map.jpg', 'collision', 'nairobi_park_collision_map.png', 'victory', 'nairobi_park_victory_map.png', 'death', 'nairobi_park_death_map.png', 'audio', 'hakuna_matata.mp3'),...
-                struct('map', 'state_house_map.jpg', 'collision', 'state_house_collision_map.png', 'victory', 'state_house_victory_map.png', 'death', 'state_house_death_map.png', 'audio', 'tushangilie_kenya.mp3')
+                struct('map', 'level-maps/nairobi_city_map.jpg', 'collision', 'collision-maps/nairobi_city_collision_map.png', 'victory', 'victory-maps/nairobi_city_victory_map.png', 'death', 'death-maps/nairobi_city_death_map.png', 'audio', 'music/wakadinali_mc_mca.mp3'),...
+                struct('map', 'level-maps/nairobi_park_map.jpg', 'collision', 'collision-maps/nairobi_park_collision_map.png', 'victory', 'victory-maps/nairobi_park_victory_map.png', 'death', 'death-maps/nairobi_park_death_map.png', 'audio', 'music/hakuna_matata.mp3'),...
+                struct('map', 'level-maps/state_house_map.jpg', 'collision', 'collision-maps/state_house_collision_map.png', 'victory', 'victory-maps/state_house_victory_map.png', 'death', 'death-maps/state_house_death_map.png', 'audio', 'music/tushangilie_kenya.mp3')
             };
 
             % Initializing the total score that is accumulated for every
@@ -71,7 +71,7 @@ classdef KanairoGameApp < matlab.apps.AppBase
             app.UIFigure.Children = backgroundAxes;
         
             % Load and set the background image
-            backgroundImage = imread('main_menu.jpg'); % Provide the path to your image
+            backgroundImage = imread('images/main_menu.jpg'); % Provide the path to your image
             backgroundAxes.XLim = [0 1];
             backgroundAxes.YLim = [0 1];
             image(backgroundAxes, 'CData', flipud(backgroundImage), 'XData', [0 1], 'YData', [0 1]);
