@@ -19,7 +19,7 @@ InAir = 0; % Checks if the character is in the Air or not
 wWidth = 232; % Aritary variable for the camera/equations
 dt = 0.5; % Time step
 ii = 0; % Amount of iterations in the while loop for frames
-life = 5; % Sets the amount of lifes the character has
+life = 5; % Sets the amount of lives the character has
 CollisionState = 1; % State of character collision. If they are touching the ground or not
 invincibilityFrames = 0; % This acts as a shield whenever the player comes into contact with an enemy to prevent rapid loss of life
 
@@ -40,100 +40,100 @@ player = audioplayer(LevelSong, Song2); % the audioplayer object is used to play
 play(player)
 
 % Loads the game over song and image 
-[GameOverSong, Song1] = audioread('game_over_song.mp3');
-[GameOver, ~, AGameOver] = imread('game_over.png');
+[GameOverSong, Song1] = audioread('music/game_over_song.mp3');
+[GameOver, ~, AGameOver] = imread('images/game_over.png');
 
 % Loads the images for the player's healthbar system
-[HealthBarFull, ~, AHealthBarFull] = imread('healthbar_5.png');
-[HealthBar4, ~, AHealthBar4] = imread('healthbar_4.png');
-[HealthBar3, ~, AHealthBar3] = imread('healthbar_3.png');
-[HealthBar2, ~, AHealthBar2] = imread('healthbar_2.png');
-[HealthBar1, ~, AHealthBar1] = imread('healthbar_1.png');
+[HealthBarFull, ~, AHealthBarFull] = imread('images/healthbar_5.png');
+[HealthBar4, ~, AHealthBar4] = imread('images/healthbar_4.png');
+[HealthBar3, ~, AHealthBar3] = imread('images/healthbar_3.png');
+[HealthBar2, ~, AHealthBar2] = imread('images/healthbar_2.png');
+[HealthBar1, ~, AHealthBar1] = imread('images/healthbar_1.png');
 
 % Loads the animation frames for running. flip object is used here with 1
 % to flip the character vertically since he's rendered while upside down.
 % 1 flips horizontally and 2 flips vertically
-[nuruRun1, ~, AnuruRun1] = imread('nuru_run_1.png');
+[nuruRun1, ~, AnuruRun1] = imread('sprites/nuru_run_1.png');
 nuruRun1 = flip(nuruRun1, 1);
 AnuruRun1 = flip(AnuruRun1, 1);
-[nuruRun2, ~, AnuruRun2] = imread('nuru_run_2.png');
+[nuruRun2, ~, AnuruRun2] = imread('sprites/nuru_run_2.png');
 nuruRun2 = flip(nuruRun2, 1);
 AnuruRun2 = flip(AnuruRun2, 1);
-[nuruRun3, ~, AnuruRun3] = imread('nuru_run_3.png');
+[nuruRun3, ~, AnuruRun3] = imread('sprites/nuru_run_3.png');
 nuruRun3 = flip(nuruRun3, 1);
 AnuruRun3 = flip(AnuruRun3, 1);
 
 % Loads the animation frames for jumping up and down
-[nuruJumpUP, ~, AnuruJumpU] = imread('nuru_jump_up.png');
+[nuruJumpUP, ~, AnuruJumpU] = imread('sprites/nuru_jump_up.png');
 nuruJumpUP = flip(nuruJumpUP, 1); %flips it around because it is upside down
 AnuruJumpU = flip(AnuruJumpU, 1);
-[nuruJumpDOWN, ~, AnuruJumpD] = imread('nuru_jump_down.png');
+[nuruJumpDOWN, ~, AnuruJumpD] = imread('sprites/nuru_jump_down.png');
 nuruJumpDOWN = flip(nuruJumpDOWN, 1);
 AnuruJumpD = flip(AnuruJumpD, 1);
 
 % Loads the static image of the character
-[Player, ~, alpha] = imread('nuru_static.png');
+[Player, ~, alpha] = imread('sprites/nuru_static.png');
 Player = flip(Player, 1);
 alpha = flip(alpha, 1);
 
 % Loads the animation frames for punching
-[nuruPunch, ~, AnuruPunch] = imread('nuru_punch.png');
+[nuruPunch, ~, AnuruPunch] = imread('sprites/nuru_punch.png');
 nuruPunch = flip(nuruPunch, 1);
 AnuruPunch = flip(AnuruPunch, 1);
 
 % Loads the animation frames for defending
-[nuruDefend, ~, AnuruDefend] = imread('nuru_defend.png');
+[nuruDefend, ~, AnuruDefend] = imread('sprites/nuru_defend.png');
 nuruDefend = flip(nuruDefend, 1);
 AnuruDefend = flip(AnuruDefend, 1);
 
 % Level-specific enemy images and animations
 switch level
     case 1
-        [enemyRun1, ~, AenemyRun1] = imread('thug_run_1.png');
+        [enemyRun1, ~, AenemyRun1] = imread('sprites/thug_run_1.png');
         enemyRun1 = flip(flip(enemyRun1, 1), 2);
         AenemyRun1 = flip(flip(AenemyRun1, 1), 2);
-        [enemyRun2, ~, AenemyRun2] = imread('thug_run_2.png');
+        [enemyRun2, ~, AenemyRun2] = imread('sprites/thug_run_2.png');
         enemyRun2 = flip(flip(enemyRun2, 1), 2);
         AenemyRun2 = flip(flip(AenemyRun2, 1), 2);
-        [enemyRun3, ~, AenemyRun3] = imread('thug_run_3.png');
+        [enemyRun3, ~, AenemyRun3] = imread('sprites/thug_run_3.png');
         enemyRun3 = flip(flip(enemyRun3, 1), 2);
         AenemyRun3 = flip(flip(AenemyRun3, 1), 2);
-        [enemyAttack, ~, AenemyAttack] = imread('thug_attack.png');
+        [enemyAttack, ~, AenemyAttack] = imread('sprites/thug_attack.png');
         enemyAttack = flip(flip(enemyAttack, 1), 2);
         AenemyAttack = flip(flip(AenemyAttack, 1), 2);
-        [enemyDead, ~, AenemyDead] = imread('thug_dead.png');
+        [enemyDead, ~, AenemyDead] = imread('sprites/thug_dead.png');
         enemyDead = flip(flip(enemyDead, 1), 2);
         AenemyDead = flip(flip(AenemyDead, 1), 2);
     case 2
-        [enemyRun1, ~, AenemyRun1] = imread('lion_walk_1.png');
+        [enemyRun1, ~, AenemyRun1] = imread('sprites/lion_walk_1.png');
         enemyRun1 = flip(enemyRun1, 1);
         AenemyRun1 = flip(AenemyRun1, 1);
-        [enemyRun2, ~, AenemyRun2] = imread('lion_walk_2.png');
+        [enemyRun2, ~, AenemyRun2] = imread('sprites/lion_walk_2.png');
         enemyRun2 = flip(enemyRun2, 1);
         AenemyRun2 = flip(AenemyRun2, 1);
-        [enemyRun3, ~, AenemyRun3] = imread('lion_walk_3.png');
+        [enemyRun3, ~, AenemyRun3] = imread('sprites/lion_walk_3.png');
         enemyRun3 = flip(enemyRun3, 1);
         AenemyRun3 = flip(AenemyRun3, 1);
-        [enemyAttack, ~, AenemyAttack] = imread('lion_walk_3.png');
+        [enemyAttack, ~, AenemyAttack] = imread('sprites/lion_walk_3.png');
         enemyAttack = flip(enemyAttack, 1);
         AenemyAttack = flip(AenemyAttack, 1);
-        [enemyDead, ~, AenemyDead] = imread('lion_dead.png');
+        [enemyDead, ~, AenemyDead] = imread('sprites/lion_dead.png');
         enemyDead = flip(enemyDead, 2);
         AenemyDead = flip(AenemyDead, 2);
     case 3
-        [enemyRun1, ~, AenemyRun1] = imread('soldier_walk_1.png');
+        [enemyRun1, ~, AenemyRun1] = imread('sprites/soldier_walk_1.png');
         enemyRun1 = flip(flip(enemyRun1, 1), 2);
         AenemyRun1 = flip(flip(AenemyRun1, 1), 2);
-        [enemyRun2, ~, AenemyRun2] = imread('soldier_walk_2.png');
+        [enemyRun2, ~, AenemyRun2] = imread('sprites/soldier_walk_2.png');
         enemyRun2 = flip(flip(enemyRun2, 1), 2);
         AenemyRun2 = flip(flip(AenemyRun2, 1), 2);
-        [enemyRun3, ~, AenemyRun3] = imread('soldier_walk_1.png');
+        [enemyRun3, ~, AenemyRun3] = imread('sprites/soldier_walk_1.png');
         enemyRun3 = flip(flip(enemyRun3, 1), 2);
         AenemyRun3 = flip(flip(AenemyRun3, 1), 2);
-        [enemyAttack, ~, AenemyAttack] = imread('soldier_walk_2.png');
+        [enemyAttack, ~, AenemyAttack] = imread('sprites/soldier_walk_2.png');
         enemyAttack = flip(flip(enemyAttack, 1), 2);
         AenemyAttack = flip(flip(AenemyAttack, 1), 2);
-        [enemyDead, ~, AenemyDead] = imread('soldier_walk_1.png');
+        [enemyDead, ~, AenemyDead] = imread('sprites/soldier_walk_1.png');
         enemyDead = imrotate(enemyDead, -90);
         AenemyDead = imrotate(AenemyDead, -90);
     otherwise
@@ -230,9 +230,9 @@ switch level
         numEnemies = 3;
         enemies(1).X = 300;
         enemies(1).Y = 210;
-        enemies(2).X = 700;
+        enemies(2).X = 830;
         enemies(2).Y = 180;
-        enemies(3).X = 4500;
+        enemies(3).X = 5500;
         enemies(3).Y = 210;
 end
 
@@ -244,7 +244,7 @@ for i = 1:numEnemies
 end
 
 % This while loop is what contains most of the game logic and it only ends
-% if the player wins the level or loses all lifes and dies
+% if the player wins the level or loses all lives and dies
 while ~victory
 
     % Enemy logic
@@ -271,7 +271,7 @@ while ~victory
                     % Player is not punching, deduct only one life
                     if invincibilityFrames == 0
                         life = life - 1;
-                        invincibilityFrames = 300; % Set a cooldown to prevent rapid loss of life
+                        invincibilityFrames = 300; % Cooldown to prevent rapid loss of life
                     end
                 end
             end
@@ -336,7 +336,7 @@ while ~victory
 
     % Condition containing the logic for when the character is in the alive state
     if cstate == 1 
-        % Updates the health bar depending on how many lifes the player has
+        % Updates the health bar depending on how many lives the player has
         % left
         if life == 4
             set(HealthBar, 'CData', HealthBar4, 'AlphaData', AHealthBar4);
@@ -347,7 +347,7 @@ while ~victory
         elseif life == 1
             set(HealthBar, 'CData', HealthBar1, 'AlphaData', AHealthBar1);
         elseif life == 0
-            cstate = 0; % Character is dead if there are no more lifes left
+            cstate = 0; % Character is dead if there are no more lives left
         end
         
         % Frames for the character while they jump
@@ -544,7 +544,7 @@ while ~victory
         set(hfg, 'Position', [0 0 1920 1080]); 
         axis off
 
-        % Returns the WIN ouput as 0 meaning the player lost all lifes
+        % Returns the WIN ouput as 0 meaning the player lost all lives
         WIN = 0;
 
         % Waits for a keyboard or mouse input, when it happens breaks out of

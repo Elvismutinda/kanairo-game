@@ -5,7 +5,7 @@
 function [speech_end] = kanairo_intro_3
 
 % Loads the background image
-background = imread('baba_nuru_speech.png');
+background = imread('images/baba_nuru_speech.png');
 
 % Creates a figure with the background image and a dimensio of 1920 by 1080
 % at axis 0,0
@@ -15,7 +15,7 @@ set(hfg, 'Position', [0 0 1920 1080])
 axis off equal
 
 % Loads the background music
-[y,Fs] = audioread('tushangilie_kenya.mp3');
+[y,Fs] = audioread('music/tushangilie_kenya.mp3');
 sound(y,Fs)
 
 % This is the keypress callback function that reacts to a key being

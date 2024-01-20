@@ -4,7 +4,7 @@
 function total_score(totalScore)
 
     % Loads the background image
-    background = imread('total_score.png');
+    background = imread('images/total_score.png');
 
     % Creates a figure with the background image and a dimensio of 1920 by 1080
     % at axis 0,0
@@ -14,7 +14,7 @@ function total_score(totalScore)
     axis off equal % turning off axis labels
 
     % Loads the background music
-    [y,Fs] = audioread('score.mp3');
+    [y,Fs] = audioread('music/score.mp3');
     sound(y,Fs)
 
     textProps = {'Color', 'white', 'FontSize', 64, 'HorizontalAlignment', 'center', 'FontName', 'NEW ACADEMY'};
